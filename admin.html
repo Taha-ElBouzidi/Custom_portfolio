@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard | Mehdii El Marouazi</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+        rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+</head>
+<body data-page="admin">
+    <header class="site-header">
+        <nav class="nav">
+            <a class="logo" href="index.html">Mehdii El Marouazi</a>
+            <button class="nav__toggle" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav__links" data-nav></ul>
+        </nav>
+    </header>
+
+    <main class="admin">
+        <section class="admin__intro">
+            <h1>Portfolio Dashboard</h1>
+            <p>
+                Manage imagery and custom pages for the portfolio. Changes save to your browser&rsquo;s localStorage and update the
+                public-facing pages instantly.
+            </p>
+        </section>
+
+        <section class="admin__panel">
+            <h2>Create a New Page</h2>
+            <form class="admin-form" id="page-form">
+                <div class="form-field">
+                    <label for="page-name">Page Name</label>
+                    <input type="text" id="page-name" name="pageName" placeholder="Ex: Travel Journal" required />
+                </div>
+                <div class="form-field">
+                    <label for="page-description">Short Description</label>
+                    <textarea id="page-description" name="pageDescription" rows="3" placeholder="Optional blurb"></textarea>
+                </div>
+                <div class="form-actions">
+                    <button type="submit" class="button">Create Page</button>
+                </div>
+            </form>
+            <div class="admin__list" id="page-list"></div>
+        </section>
+
+        <section class="admin__panel">
+            <h2 id="image-form-heading">Add Imagery</h2>
+            <form class="admin-form" id="image-form">
+                <input type="hidden" name="imageId" id="image-id" />
+                <div class="form-field">
+                    <label for="image-title">Title</label>
+                    <input type="text" id="image-title" name="title" placeholder="Image title" required />
+                </div>
+                <div class="form-field">
+                    <label for="image-description">Description</label>
+                    <textarea id="image-description" name="description" rows="3" placeholder="Details or story"></textarea>
+                </div>
+                <div class="form-field">
+                    <label for="image-tags">Tags</label>
+                    <input type="text" id="image-tags" name="tags" placeholder="Comma-separated tags" />
+                </div>
+                <div class="form-field">
+                    <label for="image-page">Assign to Page</label>
+                    <select id="image-page" name="page" required></select>
+                </div>
+                <div class="form-field" id="image-file-wrapper">
+                    <label for="image-file">Upload Image</label>
+                    <input type="file" id="image-file" name="file" accept="image/*" />
+                </div>
+                <div class="form-actions">
+                    <button type="submit" class="button">Save Image</button>
+                    <button type="button" class="button button--outline" id="cancel-edit" hidden>Cancel</button>
+                </div>
+            </form>
+        </section>
+
+        <section class="admin__panel">
+            <h2>Current Library</h2>
+            <div class="admin-gallery" id="image-list"></div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <p>&copy; <span id="year"></span> Mehdii El Marouazi. All imagery and content reserved.</p>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

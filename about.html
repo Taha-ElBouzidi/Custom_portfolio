@@ -9,7 +9,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="css/style.css" />
 </head>
-<body>
+<body data-page="about">
     <header class="site-header">
         <nav class="nav">
             <a class="logo" href="index.html">Mehdii El Marouazi</a>
@@ -18,21 +18,13 @@
                 <span></span>
                 <span></span>
             </button>
-            <ul class="nav__links">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about.html" class="is-active">About</a></li>
-                <li><a href="portfolio.html">Portfolio</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
+            <ul class="nav__links" data-nav></ul>
         </nav>
     </header>
 
     <main>
         <section class="about-hero">
-            <div class="about-hero__image">
-                <!-- Replace the source below with a high-resolution portrait from @mehdii_el_marouazi -->
-                <img src="image/about/hero.png" alt="Portrait of Mehdii El Marouazi" />
-            </div>
+            <div class="about-hero__image" data-hero-image="about" aria-hidden="true"></div>
             <div class="about-hero__content">
                 <h1>The Vision Behind Royal Moroccan Lens</h1>
                 <p>
@@ -78,6 +70,14 @@
                 <li>2023 &mdash; Surpassed 337 published posts chronicling Morocco&rsquo;s creative culture.</li>
                 <li>Ongoing &mdash; Direct booking pipeline via Instagram DM for bespoke shoots in Marrakech.</li>
             </ul>
+        </section>
+
+        <section class="dynamic-gallery" aria-label="About page gallery">
+            <div class="section-heading">
+                <h2>Studio Glimpses</h2>
+                <p>Additional visuals from the Royal Moroccan Lens archive, curated for the About page.</p>
+            </div>
+            <div class="dynamic-gallery__grid" data-gallery="about"></div>
         </section>
     </main>
 

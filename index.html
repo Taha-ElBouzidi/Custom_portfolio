@@ -9,7 +9,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="css/style.css" />
 </head>
-<body>
+<body data-page="home">
     <header class="site-header">
         <nav class="nav">
             <a class="logo" href="index.html">Mehdii El Marouazi</a>
@@ -18,21 +18,13 @@
                 <span></span>
                 <span></span>
             </button>
-            <ul class="nav__links">
-                <li><a href="index.html" class="is-active">Home</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="portfolio.html">Portfolio</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
+            <ul class="nav__links" data-nav></ul>
         </nav>
     </header>
 
     <main>
         <section class="hero">
-            <div
-                class="hero__image"
-                style="background-image: url('image/index/hero.jpeg')"
-            ></div>
+            <div class="hero__image" data-hero-image="home"></div>
             <div class="hero__content">
                 <p class="hero__eyebrow">Creative Photography</p>
                 <h1>Mehdii El Marouazi</h1>
@@ -77,32 +69,7 @@
                     experiences crafted under the Royal Moroccan Lens studio.
                 </p>
             </div>
-            <div class="featured__grid">
-                <article class="card">
-                    <div class="card__image" style="background-image: url('image/index/1.jpg');"></div>
-                    <div class="card__body">
-                        <h3>Marrakech Portraits</h3>
-                        <p>Editorial portraits with bold color contrast, translating the city&rsquo;s energy into cinematic frames.</p>
-                        <a href="portfolio.html#portraits" class="card__link">Explore portrait stories</a>
-                    </div>
-                </article>
-                <article class="card">
-                    <div class="card__image" style="background-image: url('image/index/2.jpg');"></div>
-                    <div class="card__body">
-                        <h3>Royal Moroccan Lens</h3>
-                        <p>Signature commissions and hospitality narratives produced for the Royal Moroccan Lens collective.</p>
-                        <a href="portfolio.html#royalmoroccanlens" class="card__link">View studio highlights</a>
-                    </div>
-                </article>
-                <article class="card">
-                    <div class="card__image" style="background-image: url('image/index/3.jpg');"></div>
-                    <div class="card__body">
-                        <h3>Creative Collaborations</h3>
-                        <p>Cross-genre shoots with local creatives, designers, and cultural tastemakers across Morocco.</p>
-                        <a href="portfolio.html#collaborations" class="card__link">See collaborative work</a>
-                    </div>
-                </article>
-            </div>
+            <div class="featured__grid" data-gallery="home"></div>
         </section>
     </main>
 

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Page | Mehdii El Marouazi</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+        rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+</head>
+<body data-page="dynamic">
+    <header class="site-header">
+        <nav class="nav">
+            <a class="logo" href="index.html">Mehdii El Marouazi</a>
+            <button class="nav__toggle" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav__links" data-nav></ul>
+        </nav>
+    </header>
+
+    <main data-dynamic-page>
+        <section class="dynamic-hero">
+            <div class="dynamic-hero__image" data-hero-image="dynamic"></div>
+            <div class="dynamic-hero__content">
+                <p class="hero__eyebrow" data-dynamic-eyebrow>Custom Page</p>
+                <h1 data-dynamic-title>Dynamic Page</h1>
+                <p data-dynamic-description>
+                    This page was created from the dashboard. Add imagery to its category to see a tailored gallery below.
+                </p>
+            </div>
+        </section>
+
+        <section class="dynamic-gallery" aria-label="Dynamic page gallery">
+            <div class="section-heading">
+                <h2 data-dynamic-gallery-title>Curated Gallery</h2>
+                <p data-dynamic-gallery-description>
+                    Imagery assigned to this page&rsquo;s category will appear in the grid.
+                </p>
+            </div>
+            <div class="dynamic-gallery__grid" data-gallery="dynamic"></div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <p>&copy; <span id="year"></span> Mehdii El Marouazi. All imagery and content reserved.</p>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
