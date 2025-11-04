@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Aria Lumen | Artistic Photographer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+    <header class="site-header">
+        <nav class="nav">
+            <a class="logo" href="index.html">Aria Lumen</a>
+            <button class="nav__toggle" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav__links">
+                <li><a href="index.html" class="is-active">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="portfolio.html">Portfolio</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <!-- Replace the URL below with the photographer's signature hero image -->
+            <div class="hero__image" style="background-image: url('assets/PLACEHOLDER-hero-image.jpg');"></div>
+            <div class="hero__content">
+                <p class="hero__eyebrow">Artistic Photographer</p>
+                <h1>Aria Lumen</h1>
+                <p class="hero__tagline">Capturing ethereal narratives through light, shadow, and memory.</p>
+                <a class="button" href="portfolio.html">View Portfolio</a>
+            </div>
+        </section>
+
+        <section class="intro">
+            <div class="intro__text">
+                <h2>Fragments of Light</h2>
+                <p><!-- Update with a short welcome message -->Welcome to an immersive exploration of visual storytelling where each frame is crafted to hold a whisper of wonder.</p>
+            </div>
+            <div class="intro__stats">
+                <div>
+                    <span class="stat__number">12+</span>
+                    <span class="stat__label">Years creating imagery</span>
+                </div>
+                <div>
+                    <span class="stat__number">80+</span>
+                    <span class="stat__label">Exhibitions & showcases</span>
+                </div>
+                <div>
+                    <span class="stat__number">30</span>
+                    <span class="stat__label">Awards received</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="featured">
+            <div class="section-heading">
+                <h2>Featured Series</h2>
+                <p><!-- Replace with featured series description -->A selection of ongoing photographic explorations across portraiture, landscape, and abstract visual poetry.</p>
+            </div>
+            <div class="featured__grid">
+                <article class="card">
+                    <!-- Swap placeholder image with featured project cover -->
+                    <div class="card__image" style="background-image: url('assets/PLACEHOLDER-featured-portrait.jpg');"></div>
+                    <div class="card__body">
+                        <h3>Portrait Reveries</h3>
+                        <p><!-- Replace with summary -->Intimate portrait studies celebrating authentic connection and luminous detail.</p>
+                        <a href="portfolio.html#portrait" class="card__link">Explore portrait work</a>
+                    </div>
+                </article>
+                <article class="card">
+                    <div class="card__image" style="background-image: url('assets/PLACEHOLDER-featured-landscape.jpg');"></div>
+                    <div class="card__body">
+                        <h3>Echoing Horizons</h3>
+                        <p><!-- Replace with summary -->Expansive landscapes that merge atmospheric mood with sculpted light.</p>
+                        <a href="portfolio.html#landscape" class="card__link">Discover landscapes</a>
+                    </div>
+                </article>
+                <article class="card">
+                    <div class="card__image" style="background-image: url('assets/PLACEHOLDER-featured-abstract.jpg');"></div>
+                    <div class="card__body">
+                        <h3>Chromatic Dreams</h3>
+                        <p><!-- Replace with summary -->Abstract compositions crafted from playful experimentation with color and form.</p>
+                        <a href="portfolio.html#abstract" class="card__link">View abstract series</a>
+                    </div>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <p>&copy; <span id="year"></span> Aria Lumen. All imagery and content reserved.</p>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
