@@ -9,7 +9,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="css/style.css" />
 </head>
-<body>
+<body data-page="contact">
     <header class="site-header">
         <nav class="nav">
             <a class="logo" href="index.html">Mehdii El Marouazi</a>
@@ -18,17 +18,12 @@
                 <span></span>
                 <span></span>
             </button>
-            <ul class="nav__links">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="portfolio.html">Portfolio</a></li>
-                <li><a href="contact.html" class="is-active">Contact</a></li>
-            </ul>
+            <ul class="nav__links" data-nav></ul>
         </nav>
     </header>
 
     <main>
-        <section class="contact-hero">
+        <section class="contact-hero" data-hero-image="contact">
             <h1>Book a Shoot</h1>
             <p>
                 Share project details below or reach out directly via Instagram DM&mdash;the primary booking channel highlighted on
@@ -95,6 +90,14 @@
                     </ul>
                 </div>
             </div>
+        </section>
+
+        <section class="dynamic-gallery" aria-label="Contact page gallery">
+            <div class="section-heading">
+                <h2>Recent Bookings</h2>
+                <p>Preview imagery associated with the contact page&rsquo;s category.</p>
+            </div>
+            <div class="dynamic-gallery__grid" data-gallery="contact"></div>
         </section>
     </main>
 
