@@ -27,6 +27,9 @@ alter table public.images
 alter table public.images
     add column if not exists storage_path text;
 
+alter table public.images
+    add column if not exists created_by uuid references auth.users(id);
+
 create table if not exists public.social_links (
     id uuid primary key default gen_random_uuid(),
     label text,
@@ -148,21 +151,21 @@ values
     ('00000000-0000-0000-0000-000000000103', 'Behance', 'https://behance.net/PLACEHOLDER')
 on conflict (id) do update set url = excluded.url, label = excluded.label;
 
-insert into public.images (id, page_slug, title, caption, url, sort_order, tags, source_type, storage_path)
+insert into public.images (id, page_slug, title, caption, url, sort_order, tags, source_type, storage_path, created_by)
 values
-    ('10000000-0000-0000-0000-000000000001', 'home', 'Portrait Reveries', 'Intimate portrait studies celebrating authentic connection and luminous detail.', 'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=1200&q=80', 0, ARRAY['featured','cta:Explore portrait work|portfolio.html#portrait'], 'url', null),
-    ('10000000-0000-0000-0000-000000000002', 'home', 'Echoing Horizons', 'Expansive landscapes that merge atmospheric mood with sculpted light.', 'https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=80', 1, ARRAY['featured','cta:Discover landscapes|portfolio.html#landscape'], 'url', null),
-    ('10000000-0000-0000-0000-000000000003', 'home', 'Chromatic Dreams', 'Abstract compositions crafted from playful experimentation with color and form.', 'https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&w=1200&q=80', 2, ARRAY['featured','cta:View abstract series|portfolio.html#abstract'], 'url', null),
-    ('20000000-0000-0000-0000-000000000001', 'about', 'Studio Portrait', 'Portrait of Aria Lumen', 'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=1200&q=80', 0, ARRAY['portrait'], 'url', null),
-    ('30000000-0000-0000-0000-000000000001', 'portfolio', 'Portrait Reveries — Frame 01', 'Portrait Reveries — Frame 01', 'https://images.unsplash.com/photo-1504593811423-6dd665756598?auto=format&fit=crop&w=900&q=80', 0, ARRAY['portrait','dreamlike','soft-light'], 'url', null),
-    ('30000000-0000-0000-0000-000000000002', 'portfolio', 'Portrait Reveries — Frame 02', 'Portrait Reveries — Frame 02', 'https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=900&q=80', 1, ARRAY['portrait','intimate','studio'], 'url', null),
-    ('30000000-0000-0000-0000-000000000003', 'portfolio', 'Portrait Reveries — Frame 03', 'Portrait Reveries — Frame 03', 'https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?auto=format&fit=crop&w=900&q=80', 2, ARRAY['portrait','ethereal','monochrome'], 'url', null),
-    ('30000000-0000-0000-0000-000000000004', 'portfolio', 'Echoing Horizons — Frame 01', 'Echoing Horizons — Frame 01', 'https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=900&q=80', 3, ARRAY['landscape','sunset','vast'], 'url', null),
-    ('30000000-0000-0000-0000-000000000005', 'portfolio', 'Echoing Horizons — Frame 02', 'Echoing Horizons — Frame 02', 'https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?auto=format&fit=crop&w=900&q=80', 4, ARRAY['landscape','mist','serene'], 'url', null),
-    ('30000000-0000-0000-0000-000000000006', 'portfolio', 'Echoing Horizons — Frame 03', 'Echoing Horizons — Frame 03', 'https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=900&q=80', 5, ARRAY['landscape','mountain','dawn'], 'url', null),
-    ('30000000-0000-0000-0000-000000000007', 'portfolio', 'Chromatic Dreams — Frame 01', 'Chromatic Dreams — Frame 01', 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=900&q=80', 6, ARRAY['abstract','color-play','vibrant'], 'url', null),
-    ('30000000-0000-0000-0000-000000000008', 'portfolio', 'Chromatic Dreams — Frame 02', 'Chromatic Dreams — Frame 02', 'https://images.unsplash.com/photo-1513364776144-60967b0f800f?auto=format&fit=crop&w=900&q=80', 7, ARRAY['abstract','geometry','bold'], 'url', null),
-    ('30000000-0000-0000-0000-000000000009', 'portfolio', 'Chromatic Dreams — Frame 03', 'Chromatic Dreams — Frame 03', 'https://images.unsplash.com/photo-1487412912498-0447578fcca8?auto=format&fit=crop&w=900&q=80', 8, ARRAY['abstract','texture','neon'], 'url', null)
+    ('10000000-0000-0000-0000-000000000001', 'home', 'Portrait Reveries', 'Intimate portrait studies celebrating authentic connection and luminous detail.', 'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=1200&q=80', 0, ARRAY['featured','cta:Explore portrait work|portfolio.html#portrait'], 'url', null, null),
+    ('10000000-0000-0000-0000-000000000002', 'home', 'Echoing Horizons', 'Expansive landscapes that merge atmospheric mood with sculpted light.', 'https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=80', 1, ARRAY['featured','cta:Discover landscapes|portfolio.html#landscape'], 'url', null, null),
+    ('10000000-0000-0000-0000-000000000003', 'home', 'Chromatic Dreams', 'Abstract compositions crafted from playful experimentation with color and form.', 'https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&w=1200&q=80', 2, ARRAY['featured','cta:View abstract series|portfolio.html#abstract'], 'url', null, null),
+    ('20000000-0000-0000-0000-000000000001', 'about', 'Studio Portrait', 'Portrait of Aria Lumen', 'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=1200&q=80', 0, ARRAY['portrait'], 'url', null, null),
+    ('30000000-0000-0000-0000-000000000001', 'portfolio', 'Portrait Reveries — Frame 01', 'Portrait Reveries — Frame 01', 'https://images.unsplash.com/photo-1504593811423-6dd665756598?auto=format&fit=crop&w=900&q=80', 0, ARRAY['portrait','dreamlike','soft-light'], 'url', null, null),
+    ('30000000-0000-0000-0000-000000000002', 'portfolio', 'Portrait Reveries — Frame 02', 'Portrait Reveries — Frame 02', 'https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=900&q=80', 1, ARRAY['portrait','intimate','studio'], 'url', null, null),
+    ('30000000-0000-0000-0000-000000000003', 'portfolio', 'Portrait Reveries — Frame 03', 'Portrait Reveries — Frame 03', 'https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?auto=format&fit=crop&w=900&q=80', 2, ARRAY['portrait','ethereal','monochrome'], 'url', null, null),
+    ('30000000-0000-0000-0000-000000000004', 'portfolio', 'Echoing Horizons — Frame 01', 'Echoing Horizons — Frame 01', 'https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=900&q=80', 3, ARRAY['landscape','sunset','vast'], 'url', null, null),
+    ('30000000-0000-0000-0000-000000000005', 'portfolio', 'Echoing Horizons — Frame 02', 'Echoing Horizons — Frame 02', 'https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?auto=format&fit=crop&w=900&q=80', 4, ARRAY['landscape','mist','serene'], 'url', null, null),
+    ('30000000-0000-0000-0000-000000000006', 'portfolio', 'Echoing Horizons — Frame 03', 'Echoing Horizons — Frame 03', 'https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=900&q=80', 5, ARRAY['landscape','mountain','dawn'], 'url', null, null),
+    ('30000000-0000-0000-0000-000000000007', 'portfolio', 'Chromatic Dreams — Frame 01', 'Chromatic Dreams — Frame 01', 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=900&q=80', 6, ARRAY['abstract','color-play','vibrant'], 'url', null, null),
+    ('30000000-0000-0000-0000-000000000008', 'portfolio', 'Chromatic Dreams — Frame 02', 'Chromatic Dreams — Frame 02', 'https://images.unsplash.com/photo-1513364776144-60967b0f800f?auto=format&fit=crop&w=900&q=80', 7, ARRAY['abstract','geometry','bold'], 'url', null, null),
+    ('30000000-0000-0000-0000-000000000009', 'portfolio', 'Chromatic Dreams — Frame 03', 'Chromatic Dreams — Frame 03', 'https://images.unsplash.com/photo-1487412912498-0447578fcca8?auto=format&fit=crop&w=900&q=80', 8, ARRAY['abstract','texture','neon'], 'url', null, null)
 on conflict (id) do nothing;
 
 alter table public.pages enable row level security;
@@ -213,26 +216,43 @@ $$;
 
 do $$
 begin
-    if not exists (
+    if exists (
         select 1 from pg_policies where policyname = 'Images select anon' and schemaname = 'public' and tablename = 'images'
     ) then
-        create policy "Images select anon" on public.images for select to anon using (true);
+        drop policy "Images select anon" on public.images;
     end if;
-    if not exists (
+    create policy "Images select anon" on public.images for select to anon using (true);
+
+    if exists (
         select 1 from pg_policies where policyname = 'Images insert authenticated' and schemaname = 'public' and tablename = 'images'
     ) then
-        create policy "Images insert authenticated" on public.images for insert to authenticated with check (auth.role() = 'authenticated');
+        drop policy "Images insert authenticated" on public.images;
     end if;
-    if not exists (
+    create policy "Images insert authenticated" on public.images
+        for insert
+        to authenticated
+        with check (created_by = auth.uid());
+
+    if exists (
         select 1 from pg_policies where policyname = 'Images update authenticated' and schemaname = 'public' and tablename = 'images'
     ) then
-        create policy "Images update authenticated" on public.images for update to authenticated using (auth.role() = 'authenticated') with check (auth.role() = 'authenticated');
+        drop policy "Images update authenticated" on public.images;
     end if;
-    if not exists (
+    create policy "Images update authenticated" on public.images
+        for update
+        to authenticated
+        using (created_by = auth.uid() or created_by is null)
+        with check (created_by = auth.uid() or created_by is null);
+
+    if exists (
         select 1 from pg_policies where policyname = 'Images delete authenticated' and schemaname = 'public' and tablename = 'images'
     ) then
-        create policy "Images delete authenticated" on public.images for delete to authenticated using (auth.role() = 'authenticated');
+        drop policy "Images delete authenticated" on public.images;
     end if;
+    create policy "Images delete authenticated" on public.images
+        for delete
+        to authenticated
+        using (created_by = auth.uid() or created_by is null);
 end
 $$;
 

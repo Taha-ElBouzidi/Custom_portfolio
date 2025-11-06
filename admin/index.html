@@ -36,13 +36,14 @@
             <div class="admin-card admin-card--wide">
                 <header class="admin-card__header">
                     <div>
-                        <h2>Submit Image</h2>
-                        <p>Upload new imagery for the public pages. Existing content remains unchanged.</p>
+                        <h2 data-form-title>Submit Image</h2>
+                        <p data-form-description>Upload new imagery for the public pages. Existing content remains unchanged.</p>
                     </div>
                     <button class="button button--ghost" id="logout">Logout</button>
                 </header>
 
                 <form id="image-form" class="form form--stacked">
+                    <input type="hidden" name="image_id" />
                     <label>
                         <span>Page</span>
                         <select name="page_slug" required>
@@ -96,10 +97,26 @@
                         <input type="number" name="sort_order" min="0" step="1" placeholder="0" />
                     </label>
 
-                    <button type="submit" class="button">Submit Image</button>
+                    <div class="form__actions">
+                        <button type="submit" class="button" data-submit-button>Submit Image</button>
+                        <button type="button" class="button button--ghost" data-cancel-edit hidden>Cancel edit</button>
+                    </div>
+
                     <p class="form__error" data-image-error></p>
                     <p class="form__success" data-image-success></p>
                 </form>
+            </div>
+
+            <div class="admin-card admin-card--wide admin-card--list">
+                <header class="admin-card__header">
+                    <div>
+                        <h2>Existing Images</h2>
+                        <p>Review, edit, or remove gallery items currently published on the site.</p>
+                    </div>
+                </header>
+                <div class="image-list" data-image-list>
+                    <p class="image-list__placeholder" data-image-placeholder>Sign in to load images.</p>
+                </div>
             </div>
         </section>
     </main>
