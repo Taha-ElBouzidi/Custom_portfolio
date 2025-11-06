@@ -2,8 +2,10 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Dashboard | Mehdii El Marouazi</title>
+    <meta name="robots" content="noindex, nofollow" />
+    <title>Admin Dashboard | Mehdii El Marouazi</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -11,88 +13,471 @@
         rel="stylesheet"
     />
     <link rel="stylesheet" href="css/style.css" />
+    <style>
+        :root {
+            color-scheme: dark;
+        }
+        body[data-page='admin'] {
+            background: radial-gradient(circle at 20% 10%, rgba(34, 211, 238, 0.18), transparent 55%),
+                radial-gradient(circle at 80% 0%, rgba(250, 204, 21, 0.18), transparent 45%),
+                radial-gradient(circle at 50% 60%, rgba(244, 63, 94, 0.12), transparent 60%), #050b1c;
+            font-family: var(--font-body);
+            color: var(--color-text);
+        }
+        .admin-app {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 1.5rem 5rem;
+            display: grid;
+            gap: 2.5rem;
+        }
+        .admin-header {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+        .admin-header h1 {
+            font-family: var(--font-heading);
+            text-transform: uppercase;
+            letter-spacing: 0.16em;
+        }
+        .admin-panels {
+            display: grid;
+            gap: 2rem;
+        }
+        .panel {
+            background: rgba(15, 23, 42, 0.85);
+            border: 1px solid rgba(148, 163, 184, 0.25);
+            border-radius: 24px;
+            padding: 2rem;
+            box-shadow: 0 30px 80px rgba(2, 6, 23, 0.45);
+            display: grid;
+            gap: 1.5rem;
+        }
+        .panel__header {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 1rem;
+            align-items: center;
+        }
+        .panel__header p {
+            color: var(--color-muted);
+            font-size: 0.9rem;
+        }
+        .form-grid {
+            display: grid;
+            gap: 1rem 1.5rem;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        }
+        .form-field {
+            display: flex;
+            flex-direction: column;
+            gap: 0.35rem;
+        }
+        .form-field label {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: var(--color-muted);
+        }
+        .form-field input,
+        .form-field textarea,
+        .form-field select {
+            background: rgba(15, 23, 42, 0.65);
+            border: 1px solid rgba(148, 163, 184, 0.35);
+            border-radius: 14px;
+            padding: 0.75rem 1rem;
+            color: var(--color-text);
+            font: inherit;
+        }
+        .form-field textarea {
+            min-height: 120px;
+        }
+        .form-field--checkbox {
+            flex-direction: row;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        .form-field--checkbox label {
+            margin: 0;
+        }
+        .form-actions {
+            display: flex;
+            gap: 0.75rem;
+            align-items: center;
+        }
+        .button,
+        .button--ghost {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.75rem 1.4rem;
+            border-radius: 999px;
+            border: none;
+            cursor: pointer;
+            font-size: 0.85rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            transition: background 0.2s ease;
+        }
+        .button {
+            background: var(--color-accent);
+            color: #fff;
+        }
+        .button:hover,
+        .button:focus {
+            background: #fb7185;
+        }
+        .button--ghost {
+            background: transparent;
+            border: 1px solid rgba(148, 163, 184, 0.5);
+            color: var(--color-text);
+        }
+        .button--ghost:hover,
+        .button--ghost:focus {
+            background: rgba(148, 163, 184, 0.15);
+        }
+        .table,
+        .image-list {
+            width: 100%;
+            border-collapse: collapse;
+            display: grid;
+            gap: 0.75rem;
+        }
+        .table-row,
+        .image-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr auto;
+            gap: 1rem;
+            align-items: center;
+            padding: 1rem 1.25rem;
+            background: rgba(15, 23, 42, 0.55);
+            border: 1px solid rgba(148, 163, 184, 0.2);
+            border-radius: 16px;
+        }
+        .table-row strong {
+            font-family: var(--font-heading);
+            letter-spacing: 0.08em;
+        }
+        .table-row small {
+            color: var(--color-muted);
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+        .table-row .row-actions,
+        .image-row .row-actions {
+            display: flex;
+            gap: 0.5rem;
+            justify-content: flex-end;
+        }
+        .row-actions button {
+            background: rgba(15, 23, 42, 0.7);
+            border: 1px solid rgba(148, 163, 184, 0.3);
+            color: var(--color-muted);
+            border-radius: 999px;
+            padding: 0.4rem 0.9rem;
+            font-size: 0.75rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            cursor: pointer;
+        }
+        .row-actions button:hover,
+        .row-actions button:focus {
+            color: var(--color-text);
+            border-color: var(--color-accent);
+        }
+        .image-row {
+            grid-template-columns: auto auto 1fr auto;
+            gap: 1.25rem;
+        }
+        .image-row__preview {
+            width: 96px;
+            height: 72px;
+            border-radius: 12px;
+            overflow: hidden;
+            background: rgba(15, 23, 42, 0.35);
+            border: 1px solid rgba(148, 163, 184, 0.25);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .image-row__preview img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: cover;
+        }
+        .image-row__meta {
+            display: grid;
+            gap: 0.25rem;
+        }
+        .image-row__meta strong {
+            font-family: var(--font-heading);
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+        .image-row__meta span {
+            color: var(--color-muted);
+            font-size: 0.8rem;
+        }
+        .image-row__meta .tag-chip {
+            display: inline-flex;
+            align-items: center;
+            padding: 0.25rem 0.6rem;
+            border-radius: 999px;
+            border: 1px solid rgba(148, 163, 184, 0.4);
+            color: var(--color-muted);
+            font-size: 0.7rem;
+            letter-spacing: 0.08em;
+            margin-right: 0.3rem;
+        }
+        .image-row[data-dragging='true'] {
+            opacity: 0.4;
+        }
+        .bulk-actions {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+        }
+        .bulk-actions label {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--color-muted);
+            font-size: 0.85rem;
+        }
+        .preview-frame {
+            grid-column: 1 / -1;
+            background: rgba(15, 23, 42, 0.55);
+            border: 1px dashed rgba(148, 163, 184, 0.35);
+            border-radius: 18px;
+            min-height: 180px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        .preview-frame img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: cover;
+        }
+        .toast-container {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            display: grid;
+            gap: 0.75rem;
+            z-index: 999;
+        }
+        .toast {
+            background: rgba(15, 23, 42, 0.92);
+            border: 1px solid rgba(148, 163, 184, 0.35);
+            border-radius: 16px;
+            padding: 0.9rem 1.1rem;
+            min-width: 240px;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            font-size: 0.75rem;
+            display: flex;
+            gap: 0.75rem;
+            align-items: center;
+        }
+        .toast--success {
+            border-color: rgba(34, 197, 94, 0.5);
+            color: #bbf7d0;
+        }
+        .toast--error {
+            border-color: rgba(248, 113, 113, 0.5);
+            color: #fecaca;
+        }
+        .loading-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(5, 11, 28, 0.65);
+            backdrop-filter: blur(6px);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 900;
+        }
+        .loading-overlay[data-visible='true'] {
+            display: flex;
+        }
+        .loading-overlay::after {
+            content: '';
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            border: 3px solid rgba(148, 163, 184, 0.35);
+            border-top-color: var(--color-accent);
+            animation: spin 0.9s linear infinite;
+        }
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+        @media (max-width: 720px) {
+            .table-row,
+            .image-row {
+                grid-template-columns: 1fr;
+                text-align: left;
+            }
+            .image-row {
+                grid-template-columns: 1fr;
+            }
+            .image-row__preview {
+                width: 100%;
+                height: auto;
+                aspect-ratio: 4 / 3;
+            }
+            .bulk-actions {
+                flex-direction: column;
+                align-items: stretch;
+            }
+        }
+    </style>
 </head>
 <body data-page="admin">
-    <header class="site-header">
-        <nav class="nav">
-            <a class="logo" href="index.html">Mehdii El Marouazi</a>
-            <button class="nav__toggle" aria-label="Toggle navigation">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-            <ul class="nav__links" data-nav></ul>
-        </nav>
-    </header>
-
-    <main class="admin">
-        <section class="admin__intro">
-            <h1>Portfolio Dashboard</h1>
+    <div class="loading-overlay" data-loading-overlay></div>
+    <main class="admin-app">
+        <header class="admin-header">
+            <h1>Portfolio Admin</h1>
             <p>
-                Manage imagery and custom pages for the portfolio. Changes save to your browser&rsquo;s localStorage and update the
-                public-facing pages instantly.
+                Manage navigation pages and imagery synced with Supabase. This dashboard is intentionally hidden from the public site.
+                <!-- Optional passphrase guard: set window.__ADMIN_PASSPHRASE__ in js/admin.js to require a prompt. -->
             </p>
-        </section>
+        </header>
 
-        <section class="admin__panel">
-            <h2>Create a New Page</h2>
-            <form class="admin-form" id="page-form">
-                <div class="form-field">
-                    <label for="page-name">Page Name</label>
-                    <input type="text" id="page-name" name="pageName" placeholder="Ex: Travel Journal" required />
+        <div class="admin-panels">
+            <section class="panel" id="page-panel">
+                <div class="panel__header">
+                    <div>
+                        <h2>Pages</h2>
+                        <p>Built-in pages are locked from deletion. Adjust nav order to change menu placement.</p>
+                    </div>
+                    <button type="button" class="button--ghost" data-reset-page-form>New Page</button>
                 </div>
-                <div class="form-field">
-                    <label for="page-description">Short Description</label>
-                    <textarea id="page-description" name="pageDescription" rows="3" placeholder="Optional blurb"></textarea>
-                </div>
-                <div class="form-actions">
-                    <button type="submit" class="button">Create Page</button>
-                </div>
-            </form>
-            <div class="admin__list" id="page-list"></div>
-        </section>
+                <form id="page-form" class="form-grid">
+                    <input type="hidden" id="page-id" />
+                    <div class="form-field">
+                        <label for="page-title">Title</label>
+                        <input id="page-title" name="title" type="text" placeholder="Page title" required />
+                    </div>
+                    <div class="form-field">
+                        <label for="page-slug">Slug</label>
+                        <input
+                            id="page-slug"
+                            name="slug"
+                            type="text"
+                            placeholder="example-slug"
+                            pattern="[a-z0-9-]+"
+                            required
+                        />
+                    </div>
+                    <div class="form-field">
+                        <label for="page-order">Nav order</label>
+                        <input id="page-order" name="nav_order" type="number" step="1" min="0" value="0" />
+                    </div>
+                    <div class="form-field form-field--checkbox">
+                        <input id="page-builtin" name="is_builtin" type="checkbox" disabled />
+                        <label for="page-builtin">Built-in (locked)</label>
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" class="button">Save Page</button>
+                        <button type="button" class="button--ghost" data-reset-page-form>Cancel</button>
+                    </div>
+                </form>
+                <div class="table" data-page-list></div>
+            </section>
 
-        <section class="admin__panel">
-            <h2 id="image-form-heading">Add Imagery</h2>
-            <form class="admin-form" id="image-form">
-                <input type="hidden" name="imageId" id="image-id" />
-                <div class="form-field">
-                    <label for="image-title">Title</label>
-                    <input type="text" id="image-title" name="title" placeholder="Image title" required />
+            <section class="panel" id="image-form-panel">
+                <div class="panel__header">
+                    <div>
+                        <h2>Image Editor</h2>
+                        <p>Upload to the <code>portfolio-images</code> bucket or use an external URL.</p>
+                    </div>
+                    <button type="button" class="button--ghost" data-reset-image-form>New Image</button>
                 </div>
-                <div class="form-field">
-                    <label for="image-description">Description</label>
-                    <textarea id="image-description" name="description" rows="3" placeholder="Details or story"></textarea>
-                </div>
-                <div class="form-field">
-                    <label for="image-tags">Tags</label>
-                    <input type="text" id="image-tags" name="tags" placeholder="Comma-separated tags" />
-                </div>
-                <div class="form-field">
-                    <label for="image-page">Assign to Page</label>
-                    <select id="image-page" name="page" required></select>
-                </div>
-                <div class="form-field" id="image-file-wrapper">
-                    <label for="image-file">Upload Image</label>
-                    <input type="file" id="image-file" name="file" accept="image/*" />
-                </div>
-                <div class="form-actions">
-                    <button type="submit" class="button">Save Image</button>
-                    <button type="button" class="button button--outline" id="cancel-edit" hidden>Cancel</button>
-                </div>
-            </form>
-        </section>
+                <form id="image-form" class="form-grid">
+                    <input type="hidden" id="image-id" />
+                    <div class="form-field">
+                        <label for="image-page">Page</label>
+                        <select id="image-page" required></select>
+                    </div>
+                    <div class="form-field">
+                        <label for="image-title">Title</label>
+                        <input id="image-title" type="text" placeholder="Image title" />
+                    </div>
+                    <div class="form-field">
+                        <label for="image-description">Description</label>
+                        <textarea id="image-description" placeholder="Story or caption"></textarea>
+                    </div>
+                    <div class="form-field">
+                        <label for="image-tags">Tags</label>
+                        <input id="image-tags" type="text" placeholder="Comma-separated tags" />
+                    </div>
+                    <div class="form-field">
+                        <label for="image-category">Category</label>
+                        <input id="image-category" type="text" placeholder="Filter category" />
+                    </div>
+                    <div class="form-field">
+                        <label for="image-sort">Sort order</label>
+                        <input id="image-sort" type="number" step="1" value="0" />
+                    </div>
+                    <div class="form-field form-field--checkbox">
+                        <input id="image-hero" type="checkbox" />
+                        <label for="image-hero">Hero image</label>
+                    </div>
+                    <div class="form-field form-field--checkbox">
+                        <input id="image-portrait" type="checkbox" />
+                        <label for="image-portrait">About portrait</label>
+                    </div>
+                    <div class="form-field">
+                        <label>Source</label>
+                        <div class="form-actions">
+                            <label><input type="radio" name="image-source" value="file" checked /> File upload</label>
+                            <label><input type="radio" name="image-source" value="url" /> External URL</label>
+                        </div>
+                    </div>
+                    <div class="form-field" data-file-field>
+                        <label for="image-file">Upload image</label>
+                        <input id="image-file" type="file" accept="image/*" />
+                    </div>
+                    <div class="form-field" data-url-field hidden>
+                        <label for="image-url">External image URL</label>
+                        <input id="image-url" type="url" placeholder="https://..." />
+                    </div>
+                    <div class="preview-frame" data-image-preview>Image preview appears here.</div>
+                    <div class="form-actions">
+                        <button type="submit" class="button">Save Image</button>
+                        <button type="button" class="button--ghost" data-reset-image-form>Cancel</button>
+                    </div>
+                </form>
+            </section>
 
-        <section class="admin__panel">
-            <h2>Current Library</h2>
-            <div class="admin-gallery" id="image-list"></div>
-        </section>
+            <section class="panel" id="image-library">
+                <div class="panel__header">
+                    <div>
+                        <h2>Image Library</h2>
+                        <p>Drag rows to reorder. Select multiple images for bulk delete.</p>
+                    </div>
+                    <div class="bulk-actions">
+                        <label><input type="checkbox" data-select-all /> Select all</label>
+                        <button type="button" class="button--ghost" data-delete-selected disabled>Delete selected</button>
+                    </div>
+                </div>
+                <div class="image-list" data-image-list></div>
+            </section>
+        </div>
     </main>
 
-    <footer class="site-footer">
-        <p>&copy; <span id="year"></span> Mehdii El Marouazi. All imagery and content reserved.</p>
-    </footer>
+    <div class="toast-container" data-toasts></div>
 
-    <script src="js/script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="js/supa.js"></script>
+    <script src="js/admin.js"></script>
 </body>
 </html>
