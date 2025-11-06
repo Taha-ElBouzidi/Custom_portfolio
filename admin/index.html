@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Image Submissions | Portfolio Admin</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="../css/admin.css" />
+</head>
+<body class="admin">
+    <main class="admin__container">
+        <section class="admin__login" data-view="login">
+            <div class="admin-card">
+                <h1>Admin Login</h1>
+                <p class="admin-card__description">Sign in with your Supabase email and password to submit new gallery images.</p>
+                <form id="login-form" class="form">
+                    <label>
+                        <span>Email</span>
+                        <input type="email" name="email" required autocomplete="email" />
+                    </label>
+                    <label>
+                        <span>Password</span>
+                        <input type="password" name="password" required autocomplete="current-password" />
+                    </label>
+                    <button type="submit" class="button">Sign In</button>
+                    <p class="form__hint">Create the first admin user from Supabase Auth &rarr; Users.</p>
+                    <p class="form__error" data-login-error></p>
+                </form>
+            </div>
+        </section>
+
+        <section class="admin__dashboard" data-view="dashboard" hidden>
+            <div class="admin-card admin-card--wide">
+                <header class="admin-card__header">
+                    <div>
+                        <h2>Submit Image</h2>
+                        <p>Upload new imagery for the public pages. Existing content remains unchanged.</p>
+                    </div>
+                    <button class="button button--ghost" id="logout">Logout</button>
+                </header>
+
+                <form id="image-form" class="form form--stacked">
+                    <label>
+                        <span>Page</span>
+                        <select name="page_slug" required>
+                            <option value="">Select a page</option>
+                        </select>
+                    </label>
+
+                    <label>
+                        <span>Title</span>
+                        <input type="text" name="title" placeholder="Optional" />
+                    </label>
+
+                    <label>
+                        <span>Caption / Description</span>
+                        <textarea name="caption" rows="3" placeholder="Optional"></textarea>
+                    </label>
+
+                    <label>
+                        <span>Tags (comma separated)</span>
+                        <input type="text" name="tags" placeholder="e.g. portrait, dreamlike" />
+                    </label>
+
+                    <fieldset class="form__fieldset">
+                        <legend>Image Source</legend>
+                        <label class="form__option">
+                            <input type="radio" name="source_type" value="file" checked />
+                            <span>Upload file</span>
+                        </label>
+                        <label class="form__option">
+                            <input type="radio" name="source_type" value="url" />
+                            <span>External URL</span>
+                        </label>
+                    </fieldset>
+
+                    <div class="form__source" data-source="file">
+                        <label>
+                            <span>Image file</span>
+                            <input type="file" name="file" accept="image/*" />
+                        </label>
+                    </div>
+
+                    <div class="form__source" data-source="url" hidden>
+                        <label>
+                            <span>Image URL</span>
+                            <input type="url" name="external_url" placeholder="https://example.com/image.jpg" />
+                        </label>
+                    </div>
+
+                    <label>
+                        <span>Sort order (optional)</span>
+                        <input type="number" name="sort_order" min="0" step="1" placeholder="0" />
+                    </label>
+
+                    <button type="submit" class="button">Submit Image</button>
+                    <p class="form__error" data-image-error></p>
+                    <p class="form__success" data-image-success></p>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <script src="../js/env.js"></script>
+    <script src="../js/admin.js" type="module"></script>
+</body>
+</html>

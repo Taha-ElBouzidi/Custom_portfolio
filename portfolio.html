@@ -3,16 +3,16 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Portfolio | Mehdii El Marouazi</title>
+    <title>Portfolio | Aria Lumen</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
     <header class="site-header">
         <nav class="nav">
-            <a class="logo" href="index.html">Mehdii El Marouazi</a>
+            <a class="logo" href="index.html">Aria Lumen</a>
             <button class="nav__toggle" aria-label="Toggle navigation">
                 <span></span>
                 <span></span>
@@ -30,58 +30,54 @@
     <main>
         <section class="portfolio-hero">
             <h1>Portfolio</h1>
-            <p>
-                Curated sets echoing the Instagram presence of <span class="highlight">@mehdii_el_marouazi</span>&mdash;creative portraits,
-                Royal Moroccan Lens commissions, and cross-genre collaborations shaped in Marrakech.
-            </p>
+            <p>Curated collections across portrait, landscape, and abstract studies.</p>
         </section>
 
         <section class="portfolio-filter">
             <button class="filter-button is-active" data-filter="all">All</button>
-            <button class="filter-button" data-filter="portraits">Portraits</button>
-            <button class="filter-button" data-filter="royalmoroccanlens">Royal Moroccan Lens</button>
-            <button class="filter-button" data-filter="collaborations">Collaborations</button>
+            <button class="filter-button" data-filter="portrait">Portrait</button>
+            <button class="filter-button" data-filter="landscape">Landscape</button>
+            <button class="filter-button" data-filter="abstract">Abstract</button>
         </section>
 
         <section class="portfolio-gallery">
-            <!-- Duplicate and replace placeholder images as needed -->
-            <figure class="gallery-item" data-category="portraits" id="portraits">
-                <img src="assets/PLACEHOLDER-portrait-01.jpg" alt="Creative portrait from Marrakech session" />
-                <figcaption>Marrakech Portraits &mdash; Luminous dusk session</figcaption>
+            <figure class="gallery-item" data-category="portrait" id="portrait">
+                <img src="assets/PLACEHOLDER-portrait-01.jpg" alt="Portrait series image 01" />
+                <figcaption>Portrait Reveries &mdash; Frame 01</figcaption>
             </figure>
-            <figure class="gallery-item" data-category="portraits">
-                <img src="assets/PLACEHOLDER-portrait-02.jpg" alt="Editorial portrait with saturated color palette" />
-                <figcaption>Marrakech Portraits &mdash; Editorial palette study</figcaption>
+            <figure class="gallery-item" data-category="portrait">
+                <img src="assets/PLACEHOLDER-portrait-02.jpg" alt="Portrait series image 02" />
+                <figcaption>Portrait Reveries &mdash; Frame 02</figcaption>
             </figure>
-            <figure class="gallery-item" data-category="portraits">
-                <img src="assets/PLACEHOLDER-portrait-03.jpg" alt="Street portrait captured in Marrakech" />
-                <figcaption>Marrakech Portraits &mdash; Medina street light</figcaption>
-            </figure>
-
-            <figure class="gallery-item" data-category="royalmoroccanlens" id="royalmoroccanlens">
-                <img src="assets/PLACEHOLDER-landscape-01.jpg" alt="Royal Moroccan Lens hospitality showcase" />
-                <figcaption>Royal Moroccan Lens &mdash; Riad hospitality story</figcaption>
-            </figure>
-            <figure class="gallery-item" data-category="royalmoroccanlens">
-                <img src="assets/PLACEHOLDER-landscape-02.jpg" alt="Detail from Royal Moroccan Lens commission" />
-                <figcaption>Royal Moroccan Lens &mdash; Architectural detail</figcaption>
-            </figure>
-            <figure class="gallery-item" data-category="royalmoroccanlens">
-                <img src="assets/PLACEHOLDER-landscape-03.jpg" alt="Lifestyle vignette styled by Royal Moroccan Lens" />
-                <figcaption>Royal Moroccan Lens &mdash; Lifestyle vignette</figcaption>
+            <figure class="gallery-item" data-category="portrait">
+                <img src="assets/PLACEHOLDER-portrait-03.jpg" alt="Portrait series image 03" />
+                <figcaption>Portrait Reveries &mdash; Frame 03</figcaption>
             </figure>
 
-            <figure class="gallery-item" data-category="collaborations" id="collaborations">
-                <img src="assets/PLACEHOLDER-abstract-01.jpg" alt="Collaboration with Moroccan designer" />
-                <figcaption>Creative Collaborations &mdash; Designer spotlight</figcaption>
+            <figure class="gallery-item" data-category="landscape" id="landscape">
+                <img src="assets/PLACEHOLDER-landscape-01.jpg" alt="Landscape series image 01" />
+                <figcaption>Echoing Horizons &mdash; Frame 01</figcaption>
             </figure>
-            <figure class="gallery-item" data-category="collaborations">
-                <img src="assets/PLACEHOLDER-abstract-02.jpg" alt="Editorial collaboration for cultural tastemaker" />
-                <figcaption>Creative Collaborations &mdash; Editorial story</figcaption>
+            <figure class="gallery-item" data-category="landscape">
+                <img src="assets/PLACEHOLDER-landscape-02.jpg" alt="Landscape series image 02" />
+                <figcaption>Echoing Horizons &mdash; Frame 02</figcaption>
             </figure>
-            <figure class="gallery-item" data-category="collaborations">
-                <img src="assets/PLACEHOLDER-abstract-03.jpg" alt="Partnership shoot featuring Marrakech musician" />
-                <figcaption>Creative Collaborations &mdash; Music & lifestyle</figcaption>
+            <figure class="gallery-item" data-category="landscape">
+                <img src="assets/PLACEHOLDER-landscape-03.jpg" alt="Landscape series image 03" />
+                <figcaption>Echoing Horizons &mdash; Frame 03</figcaption>
+            </figure>
+
+            <figure class="gallery-item" data-category="abstract" id="abstract">
+                <img src="assets/PLACEHOLDER-abstract-01.jpg" alt="Abstract series image 01" />
+                <figcaption>Chromatic Dreams &mdash; Frame 01</figcaption>
+            </figure>
+            <figure class="gallery-item" data-category="abstract">
+                <img src="assets/PLACEHOLDER-abstract-02.jpg" alt="Abstract series image 02" />
+                <figcaption>Chromatic Dreams &mdash; Frame 02</figcaption>
+            </figure>
+            <figure class="gallery-item" data-category="abstract">
+                <img src="assets/PLACEHOLDER-abstract-03.jpg" alt="Abstract series image 03" />
+                <figcaption>Chromatic Dreams &mdash; Frame 03</figcaption>
             </figure>
         </section>
     </main>
@@ -93,7 +89,7 @@
     </div>
 
     <footer class="site-footer">
-        <p>&copy; <span id="year"></span> Mehdii El Marouazi. All imagery and content reserved.</p>
+        <p>&copy; <span id="year"></span> Aria Lumen. All imagery and content reserved.</p>
     </footer>
 
     <script src="js/script.js"></script>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Page | Moroccan Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="css/style.css" />
+</head>
+<body data-page="dynamic">
+    <header class="site-header">
+        <nav class="nav">
+            <a class="logo" href="index.html">Moroccan Portfolio</a>
+            <button class="nav__toggle" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav__links" data-nav></ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="dynamic-page">
+            <h1 data-page-title>Loading...</h1>
+            <div class="dynamic-page__grid" data-page-gallery></div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <p>&copy; <span id="year"></span> Moroccan Portfolio.</p>
+    </footer>
+
+    <script src="js/env.js"></script>
+    <script type="module" src="js/public.js"></script>
+</body>
+</html>
