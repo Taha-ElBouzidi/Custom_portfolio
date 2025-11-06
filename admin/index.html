@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Image Management | Portfolio Admin</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="../css/admin.css" />
+</head>
+<body class="admin">
+    <main class="admin__container">
+        <section class="admin__login" data-view="login">
+            <div class="admin-card">
+                <h1>Admin Login</h1>
+                <p class="admin-card__description">
+                    Sign in with your Supabase email and password to manage portfolio images.
+                </p>
+                <form id="login-form" class="form">
+                    <label>
+                        <span>Email</span>
+                        <input type="email" name="email" required autocomplete="email" />
+                    </label>
+                    <label>
+                        <span>Password</span>
+                        <input type="password" name="password" required autocomplete="current-password" />
+                    </label>
+                    <button type="submit" class="button">Sign In</button>
+                    <p class="form__hint">Create the first admin user from Supabase Auth → Users.</p>
+                    <p class="form__error" data-login-error></p>
+                </form>
+            </div>
+        </section>
+
+        <section class="admin__dashboard" data-view="dashboard" hidden>
+            <div class="admin-card admin-card--wide">
+                <header class="admin-card__header">
+                    <div>
+                        <h2>Images</h2>
+                        <p>Upload new imagery, review active photos, and keep the public galleries fresh.</p>
+                    </div>
+                    <button class="button button--ghost" id="logout">Logout</button>
+                </header>
+
+                <div class="admin-grid">
+                    <form id="image-form" class="form form--stacked" autocomplete="off">
+                        <h3>Add Image</h3>
+                        <label>
+                            <span>Page</span>
+                            <select name="page_slug" required>
+                                <option value="">Select a page</option>
+                            </select>
+                        </label>
+
+                        <label>
+                            <span>Title</span>
+                            <input type="text" name="title" placeholder="Optional" />
+                        </label>
+
+                        <label>
+                            <span>Caption / Description</span>
+                            <textarea name="caption" rows="3" placeholder="Optional"></textarea>
+                        </label>
+
+                        <label>
+                            <span>Tags (comma separated)</span>
+                            <input type="text" name="tags" placeholder="e.g. portraits, Marrakech" />
+                        </label>
+
+                        <fieldset class="form__fieldset">
+                            <legend>Image Source</legend>
+                            <label class="form__option">
+                                <input type="radio" name="source_type" value="file" checked />
+                                <span>Upload file</span>
+                            </label>
+                            <label class="form__option">
+                                <input type="radio" name="source_type" value="url" />
+                                <span>External URL</span>
+                            </label>
+                        </fieldset>
+
+                        <div class="form__source" data-source="file">
+                            <label>
+                                <span>Image file</span>
+                                <input type="file" name="file" accept="image/*" />
+                            </label>
+                            <p class="form__hint">JPEG or PNG up to 10MB.</p>
+                        </div>
+
+                        <div class="form__source" data-source="url" hidden>
+                            <label>
+                                <span>Image URL</span>
+                                <input type="url" name="external_url" placeholder="https://example.com/image.jpg" />
+                            </label>
+                        </div>
+
+                        <label>
+                            <span>Sort order (optional)</span>
+                            <input type="number" name="sort_order" min="0" step="1" placeholder="0" />
+                        </label>
+
+                        <label class="form__checkbox">
+                            <input type="checkbox" name="active" checked />
+                            <span>Active (visible on public site)</span>
+                        </label>
+
+                        <button type="submit" class="button">Submit Image</button>
+                        <p class="form__error" data-image-error></p>
+                        <p class="form__success" data-image-success></p>
+                    </form>
+
+                    <section class="panel">
+                        <header class="panel__header">
+                            <div>
+                                <h3>Active Photos</h3>
+                                <p>Filter, edit, deactivate, or delete existing uploads.</p>
+                            </div>
+                            <div class="panel__filters">
+                                <label>
+                                    <span>Page</span>
+                                    <select data-filter="page">
+                                        <option value="all">All pages</option>
+                                    </select>
+                                </label>
+                                <label>
+                                    <span>Status</span>
+                                    <select data-filter="status">
+                                        <option value="active">Active</option>
+                                        <option value="inactive">Inactive</option>
+                                        <option value="all">All</option>
+                                    </select>
+                                </label>
+                                <label class="panel__search">
+                                    <span>Search</span>
+                                    <input type="search" data-filter="search" placeholder="Title, caption, or tag" />
+                                </label>
+                            </div>
+                        </header>
+
+                        <p class="panel__error" data-list-error></p>
+                        <p class="panel__success" data-list-success></p>
+                        <p class="panel__loading" data-list-loading hidden>Loading images…</p>
+                        <div class="image-list" data-image-list></div>
+
+                        <footer class="panel__footer">
+                            <div class="pagination" data-pagination>
+                                <button type="button" class="button button--ghost" data-page="prev">Previous</button>
+                                <span data-page-status>Page 1 of 1</span>
+                                <button type="button" class="button button--ghost" data-page="next">Next</button>
+                            </div>
+                        </footer>
+                    </section>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="../js/env.js"></script>
+    <script type="module" src="../js/admin.js"></script>
+</body>
+</html>
