@@ -3,99 +3,49 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Portfolio | Mehdii El Marouazi</title>
+    <title>Portfolio | Moroccan Portfolio</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="css/style.css" />
 </head>
-<body>
+<body data-page="portfolio">
     <header class="site-header">
         <nav class="nav">
-            <a class="logo" href="index.html">Mehdii El Marouazi</a>
+            <a class="logo" href="index.html">Moroccan Portfolio</a>
             <button class="nav__toggle" aria-label="Toggle navigation">
                 <span></span>
                 <span></span>
                 <span></span>
             </button>
-            <ul class="nav__links">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="portfolio.html" class="is-active">Portfolio</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
+            <ul class="nav__links" data-nav></ul>
         </nav>
     </header>
 
     <main>
         <section class="portfolio-hero">
-            <h1>Portfolio</h1>
-            <p>
-                Curated sets echoing the Instagram presence of <span class="highlight">@mehdii_el_marouazi</span>&mdash;creative portraits,
-                Royal Moroccan Lens commissions, and cross-genre collaborations shaped in Marrakech.
-            </p>
-        </section>
-
-        <section class="portfolio-filter">
-            <button class="filter-button is-active" data-filter="all">All</button>
-            <button class="filter-button" data-filter="portraits">Portraits</button>
-            <button class="filter-button" data-filter="royalmoroccanlens">Royal Moroccan Lens</button>
-            <button class="filter-button" data-filter="collaborations">Collaborations</button>
+            <h1 data-portfolio-heading>Portfolio</h1>
+            <p data-portfolio-description>Curate your portfolio from the dashboard.</p>
         </section>
 
         <section class="portfolio-gallery">
-            <!-- Duplicate and replace placeholder images as needed -->
-            <figure class="gallery-item" data-category="portraits" id="portraits">
-                <img src="assets/PLACEHOLDER-portrait-01.jpg" alt="Creative portrait from Marrakech session" />
-                <figcaption>Marrakech Portraits &mdash; Luminous dusk session</figcaption>
-            </figure>
-            <figure class="gallery-item" data-category="portraits">
-                <img src="assets/PLACEHOLDER-portrait-02.jpg" alt="Editorial portrait with saturated color palette" />
-                <figcaption>Marrakech Portraits &mdash; Editorial palette study</figcaption>
-            </figure>
-            <figure class="gallery-item" data-category="portraits">
-                <img src="assets/PLACEHOLDER-portrait-03.jpg" alt="Street portrait captured in Marrakech" />
-                <figcaption>Marrakech Portraits &mdash; Medina street light</figcaption>
-            </figure>
-
-            <figure class="gallery-item" data-category="royalmoroccanlens" id="royalmoroccanlens">
-                <img src="assets/PLACEHOLDER-landscape-01.jpg" alt="Royal Moroccan Lens hospitality showcase" />
-                <figcaption>Royal Moroccan Lens &mdash; Riad hospitality story</figcaption>
-            </figure>
-            <figure class="gallery-item" data-category="royalmoroccanlens">
-                <img src="assets/PLACEHOLDER-landscape-02.jpg" alt="Detail from Royal Moroccan Lens commission" />
-                <figcaption>Royal Moroccan Lens &mdash; Architectural detail</figcaption>
-            </figure>
-            <figure class="gallery-item" data-category="royalmoroccanlens">
-                <img src="assets/PLACEHOLDER-landscape-03.jpg" alt="Lifestyle vignette styled by Royal Moroccan Lens" />
-                <figcaption>Royal Moroccan Lens &mdash; Lifestyle vignette</figcaption>
-            </figure>
-
-            <figure class="gallery-item" data-category="collaborations" id="collaborations">
-                <img src="assets/PLACEHOLDER-abstract-01.jpg" alt="Collaboration with Moroccan designer" />
-                <figcaption>Creative Collaborations &mdash; Designer spotlight</figcaption>
-            </figure>
-            <figure class="gallery-item" data-category="collaborations">
-                <img src="assets/PLACEHOLDER-abstract-02.jpg" alt="Editorial collaboration for cultural tastemaker" />
-                <figcaption>Creative Collaborations &mdash; Editorial story</figcaption>
-            </figure>
-            <figure class="gallery-item" data-category="collaborations">
-                <img src="assets/PLACEHOLDER-abstract-03.jpg" alt="Partnership shoot featuring Marrakech musician" />
-                <figcaption>Creative Collaborations &mdash; Music & lifestyle</figcaption>
-            </figure>
+            <div class="portfolio__grid" data-portfolio-grid></div>
         </section>
     </main>
 
-    <div class="lightbox" role="dialog" aria-modal="true" aria-hidden="true">
-        <button class="lightbox__close" aria-label="Close image">&times;</button>
-        <img class="lightbox__image" src="" alt="Expanded portfolio image" />
-        <p class="lightbox__caption"></p>
+    <div class="lightbox" data-lightbox>
+        <div class="lightbox__inner">
+            <button class="lightbox__close" type="button" data-lightbox-close aria-label="Close lightbox">&times;</button>
+            <img data-lightbox-image alt="Portfolio preview" />
+            <p data-lightbox-caption></p>
+        </div>
     </div>
 
     <footer class="site-footer">
-        <p>&copy; <span id="year"></span> Mehdii El Marouazi. All imagery and content reserved.</p>
+        <p>&copy; <span id="year"></span> Moroccan Portfolio.</p>
     </footer>
 
-    <script src="js/script.js"></script>
+    <script src="js/env.js"></script>
+    <script type="module" src="js/public.js"></script>
 </body>
 </html>

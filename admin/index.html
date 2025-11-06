@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard | Portfolio Admin</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="../css/admin.css" />
+</head>
+<body class="admin">
+    <main class="admin__container">
+        <section class="admin__login" data-view="login">
+            <div class="admin-card">
+                <h1>Admin Login</h1>
+                <p class="admin-card__description">Sign in with your Supabase email and password to manage the site.</p>
+                <form id="login-form" class="form">
+                    <label>
+                        <span>Email</span>
+                        <input type="email" name="email" required autocomplete="email" />
+                    </label>
+                    <label>
+                        <span>Password</span>
+                        <input type="password" name="password" required autocomplete="current-password" />
+                    </label>
+                    <button type="submit" class="button">Sign In</button>
+                    <p class="form__hint">Use Supabase Auth to sign up the first admin account.</p>
+                    <p class="form__error" data-login-error></p>
+                </form>
+            </div>
+        </section>
+
+        <section class="admin__dashboard" data-view="dashboard" hidden>
+            <aside class="admin__sidebar">
+                <h2>Dashboard</h2>
+                <nav>
+                    <button class="sidebar__link" data-panel="pages">Pages</button>
+                    <button class="sidebar__link" data-panel="images">Images</button>
+                    <button class="sidebar__link" data-panel="settings">Site Settings</button>
+                    <button class="sidebar__link" data-panel="social">Social Links</button>
+                </nav>
+                <button class="button button--ghost" id="logout">Logout</button>
+            </aside>
+
+            <section class="admin__panels">
+                <article class="admin-panel" data-panel-id="pages">
+                    <header>
+                        <h3>Pages</h3>
+                        <p>Manage the navigation and add additional pages.</p>
+                    </header>
+
+                    <form id="page-create-form" class="form form--inline">
+                        <label>
+                            <span>Page title</span>
+                            <input type="text" name="title" required />
+                        </label>
+                        <label>
+                            <span>Slug</span>
+                            <input type="text" name="slug" required />
+                        </label>
+                        <button type="submit" class="button">Add Page</button>
+                        <p class="form__error" data-page-create-error></p>
+                    </form>
+
+                    <div class="table" role="table">
+                        <div class="table__header" role="row">
+                            <span role="columnheader">Title</span>
+                            <span role="columnheader">Slug</span>
+                            <span role="columnheader">Actions</span>
+                        </div>
+                        <div id="pages-table" class="table__body"></div>
+                    </div>
+                </article>
+
+                <article class="admin-panel" data-panel-id="images" hidden>
+                    <header>
+                        <h3>Images</h3>
+                        <p>Upload and organise imagery for each page.</p>
+                    </header>
+
+                    <label class="form form--inline">
+                        <span>Select page</span>
+                        <select id="image-page-select"></select>
+                    </label>
+
+                    <form id="image-upload-form" class="form form--upload">
+                        <label>
+                            <span>Image file</span>
+                            <input type="file" name="file" accept="image/*" required />
+                        </label>
+                        <label>
+                            <span>Title</span>
+                            <input type="text" name="title" placeholder="Optional" />
+                        </label>
+                        <label>
+                            <span>Caption</span>
+                            <textarea name="caption" rows="2" placeholder="Optional"></textarea>
+                        </label>
+                        <label>
+                            <span>Sort order</span>
+                            <input type="number" name="sort_order" placeholder="0" />
+                        </label>
+                        <button type="submit" class="button">Upload</button>
+                        <p class="form__error" data-image-upload-error></p>
+                    </form>
+
+                    <div id="images-list" class="card-list"></div>
+                </article>
+
+                <article class="admin-panel" data-panel-id="settings" hidden>
+                    <header>
+                        <h3>Site Settings</h3>
+                        <p>Control hero content and about biography.</p>
+                    </header>
+
+                    <form id="site-settings-form" class="form">
+                        <label>
+                            <span>Hero title</span>
+                            <input type="text" name="hero_title" />
+                        </label>
+                        <label>
+                            <span>Hero subtitle</span>
+                            <textarea name="hero_subtitle" rows="2"></textarea>
+                        </label>
+                        <label>
+                            <span>Hero image URL</span>
+                            <input type="url" name="hero_image_url" />
+                        </label>
+                        <label>
+                            <span>About bio</span>
+                            <textarea name="about_bio" rows="4"></textarea>
+                        </label>
+                        <button type="submit" class="button">Save Settings</button>
+                        <p class="form__error" data-settings-error></p>
+                        <p class="form__success" data-settings-success></p>
+                    </form>
+                </article>
+
+                <article class="admin-panel" data-panel-id="social" hidden>
+                    <header>
+                        <h3>Social Links</h3>
+                        <p>Add or update social profiles.</p>
+                    </header>
+
+                    <form id="social-create-form" class="form form--inline">
+                        <label>
+                            <span>Label</span>
+                            <input type="text" name="label" required />
+                        </label>
+                        <label>
+                            <span>URL</span>
+                            <input type="url" name="url" required />
+                        </label>
+                        <button type="submit" class="button">Add Link</button>
+                        <p class="form__error" data-social-create-error></p>
+                    </form>
+
+                    <div id="social-list" class="card-list"></div>
+                </article>
+            </section>
+        </section>
+    </main>
+
+    <script src="../js/env.js"></script>
+    <script type="module" src="../js/admin.js"></script>
+</body>
+</html>

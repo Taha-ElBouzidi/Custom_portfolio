@@ -1,0 +1,344 @@
+:root {
+    --admin-bg: #0b0b0f;
+    --admin-panel: rgba(20, 20, 28, 0.92);
+    --admin-border: rgba(255, 255, 255, 0.08);
+    --admin-accent: #ffd166;
+    --admin-text: #f1f1f5;
+    --admin-muted: rgba(241, 241, 245, 0.6);
+}
+
+body.admin {
+    font-family: "Inter", sans-serif;
+    background: radial-gradient(circle at 20% 20%, rgba(255, 209, 102, 0.08), transparent 55%),
+        radial-gradient(circle at 80% 0%, rgba(255, 102, 204, 0.08), transparent 55%),
+        var(--admin-bg);
+    color: var(--admin-text);
+    min-height: 100vh;
+    margin: 0;
+}
+
+.admin__container {
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+.admin__login,
+.admin__dashboard {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem 1.5rem;
+}
+
+.admin-card {
+    background: var(--admin-panel);
+    padding: 2.5rem;
+    border-radius: 1.5rem;
+    border: 1px solid var(--admin-border);
+    max-width: 420px;
+    width: 100%;
+    box-shadow: 0 40px 90px rgba(0, 0, 0, 0.35);
+}
+
+.admin-card h1 {
+    font-size: 2rem;
+    margin-bottom: 0.75rem;
+}
+
+.admin-card__description {
+    color: var(--admin-muted);
+    margin-bottom: 1.5rem;
+}
+
+.admin__dashboard {
+    align-items: stretch;
+    gap: 2rem;
+}
+
+.admin__sidebar {
+    width: 260px;
+    background: var(--admin-panel);
+    padding: 2rem 1.5rem;
+    border-radius: 1.5rem;
+    border: 1px solid var(--admin-border);
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.25);
+}
+
+.admin__sidebar h2 {
+    margin: 0;
+}
+
+.sidebar__link {
+    width: 100%;
+    text-align: left;
+    background: transparent;
+    border: 1px solid transparent;
+    color: var(--admin-muted);
+    font-weight: 500;
+    padding: 0.75rem 1rem;
+    border-radius: 0.85rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.sidebar__link.is-active,
+.sidebar__link:hover {
+    color: var(--admin-text);
+    border-color: var(--admin-accent);
+    background: rgba(255, 209, 102, 0.12);
+}
+
+.admin__panels {
+    flex: 1;
+    background: var(--admin-panel);
+    border-radius: 1.5rem;
+    border: 1px solid var(--admin-border);
+    padding: 2rem 2.5rem;
+    overflow-y: auto;
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.25);
+}
+
+.admin-panel header {
+    margin-bottom: 1.5rem;
+}
+
+.admin-panel header h3 {
+    margin: 0 0 0.5rem;
+    font-size: 1.5rem;
+}
+
+.admin-panel header p {
+    margin: 0;
+    color: var(--admin-muted);
+}
+
+.form {
+    display: grid;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.form--inline {
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    align-items: end;
+}
+
+.form label {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    font-size: 0.875rem;
+}
+
+.form input,
+.form textarea,
+.form select {
+    background: rgba(0, 0, 0, 0.35);
+    border: 1px solid var(--admin-border);
+    border-radius: 0.75rem;
+    padding: 0.75rem 1rem;
+    color: var(--admin-text);
+    font: inherit;
+}
+
+.form textarea {
+    resize: vertical;
+}
+
+.button {
+    background: var(--admin-accent);
+    border: none;
+    border-radius: 999px;
+    color: #1d1d24;
+    padding: 0.65rem 1.5rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.button:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 12px 30px rgba(255, 209, 102, 0.3);
+}
+
+.button--ghost {
+    background: transparent;
+    color: var(--admin-muted);
+    border: 1px solid var(--admin-border);
+}
+
+.button--ghost:hover {
+    color: var(--admin-text);
+    border-color: var(--admin-accent);
+}
+
+.button--small {
+    padding: 0.45rem 1.2rem;
+    font-size: 0.85rem;
+}
+
+.form__hint {
+    color: var(--admin-muted);
+    font-size: 0.8rem;
+}
+
+.form__error {
+    color: #ff6b6b;
+    min-height: 1.2rem;
+    font-size: 0.85rem;
+}
+
+.form__success {
+    color: #4ade80;
+    min-height: 1.2rem;
+    font-size: 0.85rem;
+}
+
+.table {
+    border: 1px solid var(--admin-border);
+    border-radius: 1rem;
+    overflow: hidden;
+}
+
+.table__header,
+.table__row {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr auto;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.25rem;
+}
+
+.table__header {
+    background: rgba(255, 255, 255, 0.04);
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+
+.table__row:not(:last-child) {
+    border-bottom: 1px solid var(--admin-border);
+}
+
+.table__row input {
+    width: 100%;
+}
+
+.table__slug {
+    font-family: "Space Grotesk", sans-serif;
+    font-size: 0.95rem;
+    color: var(--admin-muted);
+}
+
+.table__actions {
+    display: flex;
+    gap: 0.75rem;
+    justify-content: flex-end;
+}
+
+.table__body:empty::before {
+    content: "No pages yet.";
+    display: block;
+    padding: 1.5rem;
+    color: var(--admin-muted);
+}
+
+.card-list {
+    display: grid;
+    gap: 1.5rem;
+}
+
+.card-list__empty {
+    color: var(--admin-muted);
+}
+
+.card {
+    display: grid;
+    grid-template-columns: 120px 1fr auto;
+    gap: 1.5rem;
+    padding: 1.5rem;
+    border: 1px solid var(--admin-border);
+    border-radius: 1rem;
+    background: rgba(0, 0, 0, 0.25);
+}
+
+.card__preview {
+    width: 120px;
+    height: 120px;
+    border-radius: 0.75rem;
+    background-size: cover;
+    background-position: center;
+}
+
+.card__fields {
+    display: grid;
+    gap: 0.75rem;
+}
+
+.card__actions {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    justify-content: center;
+}
+
+@media (max-width: 960px) {
+    .admin__dashboard {
+        flex-direction: column;
+    }
+
+    .admin__sidebar {
+        width: 100%;
+        flex-direction: row;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 1rem;
+    }
+
+    .admin__sidebar nav {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+    }
+
+    .admin__panels {
+        width: 100%;
+        padding: 2rem;
+    }
+}
+
+@media (max-width: 720px) {
+    .card {
+        grid-template-columns: 1fr;
+    }
+
+    .card__preview {
+        width: 100%;
+        height: 220px;
+    }
+
+    .card__actions {
+        flex-direction: row;
+        justify-content: flex-start;
+    }
+
+    .table__header,
+    .table__row {
+        grid-template-columns: 1fr;
+    }
+
+    .table__actions {
+        justify-content: flex-start;
+    }
+}
